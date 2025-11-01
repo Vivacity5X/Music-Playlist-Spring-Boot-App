@@ -13,9 +13,6 @@ A Spring Boot CRUD + JPA Music Playlist project that lets users add, view, updat
 - REST API
 - UI usage
 - Build & packaging
-- Docker (optional)
-- Tests
-- Contributing
 - Author & license
 
 ## Project overview
@@ -117,7 +114,8 @@ Run the jar:
 ```
  java -jar target/music-playlist-*.jar
 ```
-
+## Live Deployed using Render
+https://musicplaylistchaitanya.onrender.com/
 
 ## Author
 Chaitanya Khandare
