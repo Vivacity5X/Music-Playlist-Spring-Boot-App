@@ -1,5 +1,5 @@
 🎵 Music Playlist – Spring Boot Project
-
+ 
 📌 Project Overview
 This is a Spring Boot-based web application that allows users to manage a list of songs — add, update, delete, and view their favorite music tracks.
 The project demonstrates Spring Boot CRUD operations, REST API integration, and MySQL database connectivity.
