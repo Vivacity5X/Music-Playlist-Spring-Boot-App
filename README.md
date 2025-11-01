@@ -19,7 +19,7 @@ A Spring Boot CRUD + JPA Music Playlist project that lets users add, view, updat
 - Author & license
 
 ## Project overview
-This project is a simple music playlist manager. Users can maintain a list of songs with metadata (title, artist, album, year, genre, and optional URL). The app demonstrates:
+This project is a simple music playlist manager. Users can maintain a list of songs with metadata (title, artist, duration). The app demonstrates:
 
 - Spring Boot web application structure
 - Spring Data JPA with MySQL
@@ -45,7 +45,6 @@ This project is a simple music playlist manager. Users can maintain a list of so
 - Java 11 or newer
 - Maven 3.6+
 - MySQL server (or use Docker)
-- (Optional) Docker & Docker Compose for containerized setup
 
 ## Installation
 
@@ -98,26 +97,11 @@ Common endpoints:
 - PUT /songs/{id} — Update a song
 - DELETE /songs/{id} — Delete a song
 
-Example: create a new song with curl
-```bash
- curl -X POST http://localhost:8080/songs \
-   -H "Content-Type: application/json" \
-   -d '{
-     "title":"Imagine",
-     "artist":"John Lennon",
-     "album":"Imagine",
-     "year":1971,
-     "genre":"Rock",
-     "url":"https://example.com/song.mp3"
-   }'
-```
-
 Example: list songs
 ```bash
  curl http://localhost:8080/songs
 ```
 
-(Adjust JSON field names to match your Song entity if different.)
 
 ## UI usage
 - Visit /songs-list to see the playlist.
@@ -134,23 +118,6 @@ Run the jar:
  java -jar target/music-playlist-*.jar
 ```
 
-## Docker (optional)
-High-level example approach:
-- Build the jar locally.
-- Dockerfile copies the jar and runs: java -jar /app/app.jar
-- docker-compose.yml includes a mysql service and the app service with environment variables pointing to the DB.
-
-If you want, example Dockerfile and docker-compose.yml can be added.
-
-## Tests
-- Add unit tests under src/test/java for services/repositories/controllers.
-- Add integration tests that boot the Spring context and use an in-memory DB or testcontainer for MySQL.
-
-## Contributing
-- Fork the repository.
-- Create a feature branch: git checkout -b feat/your-feature
-- Commit changes and open a pull request with a clear description.
-- Add tests and update documentation as needed.
 
 ## Author
 Chaitanya Khandare
@@ -159,4 +126,4 @@ JSPM's Rajarshi Shahu College of Engineering, Pune
 Email: chaitanykhandare789@gmail.com
 
 ## License
-This project is provided for educational purposes. See the LICENSE file in the repository for details.
+This project is provided for educational purposes.
