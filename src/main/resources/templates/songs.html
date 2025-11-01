@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎵 Music Playlist</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<div style="text-align:center; background-color:#f5f5f5; padding:10px; border-radius:8px; margin-bottom:15px;">
+    <h2 style="margin:0; color:#333;">🎵 Music Playlist App</h2>
+    <p style="margin:0; font-size:16px;">Developed by <b>Chaitanya Khandare</b> (Roll No: <b>RBT23CB019</b>)</p>
+</div>
+
+<body>
+<div class="container">
+
+    <!-- 🔍 Search Bar -->
+    <form method="get" action="/songs-list" style="text-align:center; margin-bottom: 20px;">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by title or artist" style="padding:8px; width:60%; border-radius:5px; border:1px solid #ccc;">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- ➕ Add Song Form -->
+    <form method="post" action="/songs/add" style="margin-bottom: 25px;">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="artist" placeholder="Artist" required>
+        <input type="number" step="0.1" name="duration" placeholder="Duration (min)" required>
+        <button type="submit">Add Song</button>
+    </form>
+
+    <!-- 🎵 Song List -->
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.id}"></td>
+            <td th:text="${song.title}"></td>
+            <td th:text="${song.artist}"></td>
+            <td th:text="${song.duration}"></td>
+            <td>
+                <a th:href="@{'/songs/edit/' + ${song.id}}" class="btn-edit">Edit</a>
+                <a th:href="@{'/songs/delete/' + ${song.id}}" class="btn-delete">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

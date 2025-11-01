@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Music Playlist</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 Music Playlist</h1>
+
+    <form method="get" th:action="@{/songs}" class="search-form">
+      <input type="text" name="title" placeholder="Search by title" th:value="${titleQuery}"/>
+      <input type="text" name="artist" placeholder="Search by artist" th:value="${artistQuery}"/>
+      <button type="submit">Search</button>
+      <a href="/songs" class="btn">Reset</a>
+    </form>
+
+    <a href="/songs/add" class="btn add-btn">+ Add Song</a>
+
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Title</th><th>Artist</th><th>Duration</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <tr th:each="s : ${songs}">
+          <td th:text="${s.id}">1</td>
+          <td th:text="${s.title}">Title</td>
+          <td th:text="${s.artist}">Artist</td>
+          <td th:text="${s.duration}">3.20</td>
+          <td>
+            <a th:href="@{/songs/edit/{id}(id=${s.id})}">Edit</a>
+            <form th:action="@{/songs/delete/{id}(id=${s.id})}" method="post" style="display:inline">
+              <button type="submit" onclick="return confirm('Delete this song?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
